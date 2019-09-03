@@ -45,7 +45,7 @@ class CNNPrediction(Resource):
         # print("out[1]", out[1])
         print(np.argmax(out[0]))
         r = np.argmax(out[0])
-        softmax_interval = model.predict(x)[0]
+        softmax_interval = np.around(model.predict(x)[0], decimals = 2)
 
         return {'prediction': "{} {}".format(r, softmax_interval)}
 
