@@ -62,7 +62,7 @@ class CNNPrediction(Resource):
         # Note: Sends response but only a random id
         # todo_ref.add(request.json)
 
-        todo_ref.document().set({"Filename": str(image_file),"Prediction": int(r), "Activation": [int(x) for x in softmax_interval]})
+        todo_ref.document().set({"Filename": str(image_file),"Prediction": int(r), "Activation": [float(x) for x in softmax_interval]})
 
         return jsonify({'prediction': "{} {}".format(r, softmax_interval)})
 
