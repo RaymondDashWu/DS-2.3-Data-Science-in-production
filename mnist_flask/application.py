@@ -3,6 +3,7 @@ from keras.models import load_model
 from flask_restplus import Api, Resource, fields
 from flask import Flask, jsonify, request, make_response, abort, render_template, redirect, url_for
 from firebase_admin import credentials, firestore, initialize_app
+import datetime
 
 import numpy as np
 from werkzeug.datastructures import FileStorage
@@ -62,7 +63,7 @@ class CNNPrediction(Resource):
         # Note: Sends response but only a random id
         # todo_ref.add(request.json)
 
-        todo_ref.document().set({"Filename": str(image_file),"Prediction": int(r), "Activation": [float(x) for x in softmax_interval]})
+        todo_ref.document().set({"Filename": str(image_file), "Time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"), "Prediction": int(r), "Activation": [float(x) for x in softmax_interval]})
 
         return jsonify({'prediction': "{} {}".format(r, softmax_interval)})
 
