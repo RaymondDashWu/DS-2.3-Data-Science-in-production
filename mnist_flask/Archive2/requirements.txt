@@ -1,0 +1,10 @@
+firebase_admin
+flask
+flask_restplus
+tensorflow
+# Could not get deployed alpine + tensorflow
+# https://github.com/better/alpine-tensorflow/releases/download/alpine3.7-tensorflow1.7.0/tensorflow-1.7.0-cp36-cp36m-linux_x86_64.whl
+keras
+numpy
+Pillow
+werkzeug
